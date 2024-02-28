@@ -32,7 +32,7 @@ def main():
             while True:
                 cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
                 defer = zone.y - cur.y 
-                if -150 <= defer <= 150:
+                if -50 <= defer <= 50:
                     break
                 else:
                     logging.info(f"Deference between current and target zone is: {defer}px")
@@ -51,7 +51,7 @@ def main():
                 continue
 
     except Exception as e:
-        logging.error(f"Error: {e}")
+        logging.error(f"Error: {e.with_traceback()}")
         telegram_client.send_message(f"Error, please check logs")
 
 if __name__ == "__main__":
