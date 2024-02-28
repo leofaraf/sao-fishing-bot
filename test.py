@@ -13,11 +13,13 @@ def main():
         # TODO: Press F while it isn't in fishing menu
         while True:
             pydirectinput.press('f')
+            sleep(.1)
 
             logging.info("Pressing F")
             try:
                 pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.8)
                 telegram_client.send_message("finded")
+                logging.info("Fish menu has found")
                 break
             except:
                 logging.info("We aren't in menu. Trying again")
