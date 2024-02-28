@@ -30,7 +30,12 @@ def main():
         # TODO: Attack while fish isn't killed
         while True:
             try:
-                cur = pyautogui.locateCenterOnScreen("assets/cur.png", confidence=.8)
+                cur = pyautogui.locateCenterOnScreen(
+                    "assets/cur.png",
+                    confidence=.8, 
+                    region=[zone[0], zone[1], 150, 1000],
+                    grayscale=True
+                )
                 logging.info(zone.y - cur.y) 
             except Exception as e:
                 pass
