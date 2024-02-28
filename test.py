@@ -41,7 +41,7 @@ def main():
 
             sleep(1)
             try:
-                pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.8)
+                zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
                 logging.info("We aren't killed fish. Trying again")
             except:
                 try:
@@ -51,7 +51,6 @@ def main():
                     break
                 except: 
                     pass
-            zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
 
     except Exception as e:
         logging.exception(e)
