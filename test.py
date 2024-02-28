@@ -1,12 +1,21 @@
 from time import sleep
-from utils import logger, telegram_client
+from utils import logger, telegram_client, locator, mouse
 import pyautogui
 import logging
 
 def main():
+    sleep(5)
+
     try:
-        # TODO: Press F
-        pyautogui.hotkey("f") # TODO: Press F
+        # TODO: Press F while it isn't in fishing menu
+        while True:
+            pyautogui.hotkey("f") # TODO: Press F
+            try:
+                pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.8)
+                telegram_client.send_message("finded")
+                break
+            except:
+                continue
         
         sleep(0.25)
         
@@ -17,7 +26,8 @@ def main():
             exit() # TODO: Await while fish'll on attack
             pyautogui.hotkey("f") # TODO: Press F
             if True: # TODO: If fish is killed
-                break
+                exit_btn = locator.locate_image("assets/x.png", .7, "Can't locate exit after killing a fish")
+                mouse.safety_click(exit_btn)
     except Exception as e:
         logging.error(f"Error: {e}")
         telegram_client.send_message(f"Error, please check logs")

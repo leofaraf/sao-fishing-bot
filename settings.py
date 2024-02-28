@@ -2,4 +2,7 @@
 BOT_NAME = "Example"
 
 # Pass your Telegram Bot Token please
-BOT_TOKEN = "6757315128:AAH4NqGwM7_0RiO_d4EAMuIrojz5rjv9Pok"
+TELEGRAM_BOT_TOKEN = "6757315128:AAH4NqGwM7_0RiO_d4EAMuIrojz5rjv9Pok"
+
+# Pass your Telegram ID here (you can find in bot https://t.me/RawDataBot)
+TELEGRAM_ADMIN_ID = 829668538
