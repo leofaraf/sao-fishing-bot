@@ -45,7 +45,7 @@ def main():
                 logging.info("We aren't killed fish. Trying again")
             except:
                 try:
-                    exit_btn = pyautogui.locateCenterOnScreen("assets/x.png", confidence=.8)
+                    exit_btn = locator.locate_image("assets/x.png", .8, "Can't locate X", .2)
                     mouse.safety_click(exit_btn)
                     logging.info("Fish menu has found")
                     break
@@ -54,7 +54,7 @@ def main():
             zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
 
     except Exception as e:
-        logging.error(f"Error: {e.with_traceback()}")
+        logging.error(f"Error: {e}")
         telegram_client.send_message(f"Error, please check logs")
 
 if __name__ == "__main__":
