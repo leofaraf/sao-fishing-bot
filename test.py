@@ -7,11 +7,13 @@ def main():
     sleep(5)
 
     fbtn = locator.locate_fbtn()
+    logging.info(f"button position: {fbtn}")
 
     try:
         # TODO: Press F while it isn't in fishing menu
         while True:
-            mouse.safety_click(fbtn) 
+            pyautogui.hotkey("F")
+            pyautogui.press("F", interval=.3)
 
             logging.info("Pressing F")
             try:
