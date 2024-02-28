@@ -30,7 +30,7 @@ def main():
         # TODO: Attack while fish isn't killed
         while True:
             while True:
-                cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing")
+                cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
                 defer = zone.y - cur.y 
                 if -150 <= defer <= 150:
                     break

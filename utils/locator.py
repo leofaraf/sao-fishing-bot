@@ -42,7 +42,7 @@ def locate_images(except_message, *images):
 
         
 
-def locate_image(path, confidence, except_message):
+def locate_image(path, confidence, except_message, sleep_time = 1):
     times = 0
     e = None
     while times != MAX_LOCATING_DURACTION:
@@ -50,7 +50,7 @@ def locate_image(path, confidence, except_message):
             return pyautogui.locateCenterOnScreen(path, confidence=confidence)
         except Exception as err:
             e = err
-            sleep(1)
+            sleep(sleep_time)
             times += 1
 
     logging.error(e)
