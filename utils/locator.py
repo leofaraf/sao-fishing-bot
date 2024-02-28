@@ -3,7 +3,6 @@ from settings import MAX_LOCATING_DURACTION
 from utils import telegram_client
 import pyautogui
 import logging
-from utils import win
 
 def locate_images(except_message, *images):
     times = 0
