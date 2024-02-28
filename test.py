@@ -12,8 +12,9 @@ def main():
     try:
         # TODO: Press F while it isn't in fishing menu
         while True:
-            pyautogui.hotkey("F")
-            pyautogui.press("F", interval=.3)
+            pyautogui.keyDown("F")
+            sleep(5)
+            pyautogui.keyUp("F")
 
             logging.info("Pressing F")
             try:
