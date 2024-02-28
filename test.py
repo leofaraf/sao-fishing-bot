@@ -25,8 +25,17 @@ def main():
                 logging.info("We aren't in menu. Trying again")
                 continue
         
+        zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
+
         # TODO: Attack while fish isn't killed
         while True:
+            while True:
+                cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing")
+                defer = zone.y - cur.y 
+                if -30 <= defer <= 30:
+                    break
+                else:
+                    logging.info(f"Deference between current and target zone is: {defer}px")
             pydirectinput.press('f')
             sleep(.1)
 
