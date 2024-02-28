@@ -29,36 +29,29 @@ def main():
 
         # TODO: Attack while fish isn't killed
         while True:
-            try:
-                cur = pyautogui.locateCenterOnScreen(
-                    "assets/cur.png",
-                    confidence=.8, 
-                    region=[zone[0], zone[1], 150, 1000],
-                    grayscale=True
-                )
-                logging.info(zone.y - cur.y) 
-            except Exception as e:
-                pass
-            # while True:
-            #     cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
-            #     defer = zone.y - cur.y 
-            #     if -50 <= defer <= 50:
-            #         break
-            #     else:
-            #         logging.info(f"Deference between current and target zone is: {defer}px")
-            # pydirectinput.press('f')
-            # logging.info("Pressing F")
+            while True:
+                cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
+                defer = zone.y - cur.y 
+                if -150 <= defer <= 150:
+                    break
+                else:
+                    logging.info(f"Deference between current and target zone is: {defer}px")
+            pydirectinput.press('f')
+            logging.info("Pressing F")
 
-            # sleep(1)
-            # try:
-            #     exit_btn = pyautogui.locateCenterOnScreen("assets/x.png", confidence=.8)
-            #     mouse.safety_click(exit_btn)
-            #     logging.info("Fish menu has found")
-            #     break
-            # except:
-            #     logging.info("We aren't killed fish. Trying again")
-            #     zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
-            #     continue
+            sleep(1)
+            try:
+                pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.8)
+                logging.info("We aren't killed fish. Trying again")
+            except:
+                try:
+                    exit_btn = pyautogui.locateCenterOnScreen("assets/x.png", confidence=.8)
+                    mouse.safety_click(exit_btn)
+                    logging.info("Fish menu has found")
+                    break
+                except: 
+                    pass
+            zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
 
     except Exception as e:
         logging.error(f"Error: {e.with_traceback()}")
