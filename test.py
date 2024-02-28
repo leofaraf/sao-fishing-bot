@@ -33,22 +33,22 @@ def main():
                 cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
                 defer = zone.y - cur.y 
                 if -50 <= defer <= 50:
-                    break
+                    pydirectinput.press('f')
+                    logging.info("Pressing F")
+
+                    sleep(1)
+                    try:
+                        exit_btn = pyautogui.locateCenterOnScreen("assets/x.png", confidence=.8)
+                        mouse.safety_click(exit_btn)
+                        logging.info("Fish menu has found")
+                        break
+                    except:
+                        logging.info("We aren't killed fish. Trying again")
+                        zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
+                        continue
                 else:
                     logging.info(f"Deference between current and target zone is: {defer}px")
-            pydirectinput.press('f')
-            logging.info("Pressing F")
-
-            sleep(1)
-            try:
-                exit_btn = pyautogui.locateCenterOnScreen("assets/x.png", confidence=.8)
-                mouse.safety_click(exit_btn)
-                logging.info("Fish menu has found")
-                break
-            except:
-                logging.info("We aren't killed fish. Trying again")
-                zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
-                continue
+            
 
     except Exception as e:
         logging.error(f"Error: {e.with_traceback()}")
