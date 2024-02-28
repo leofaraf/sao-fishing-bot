@@ -1,6 +1,6 @@
 from time import sleep
 from utils import logger, telegram_client, locator, mouse
-import pyautogui
+import pyautogui, pydirectinput
 import logging
 
 def main():
@@ -12,9 +12,7 @@ def main():
     try:
         # TODO: Press F while it isn't in fishing menu
         while True:
-            pyautogui.keyDown("F")
-            sleep(5)
-            pyautogui.keyUp("F")
+            pydirectinput.press('f')
 
             logging.info("Pressing F")
             try:
