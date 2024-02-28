@@ -7,7 +7,6 @@ TELEGRAM_BOT_TOKEN = "6757315128:AAH4NqGwM7_0RiO_d4EAMuIrojz5rjv9Pok"
 # Pass your Telegram ID here (you can find in bot https://t.me/RawDataBot)
 TELEGRAM_ADMIN_ID = 829668538
 
-
 # For devs
 MOUSE_MOVE_DURACTION = .05
 MAX_LOCATING_DURACTION = 10
