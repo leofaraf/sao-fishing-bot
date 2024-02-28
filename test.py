@@ -46,7 +46,8 @@ def main():
                 logging.info("Fish menu has found")
                 break
             except:
-                logging.info("We aren't in menu. Trying again")
+                logging.info("We aren't killed fish. Trying again")
+                zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
                 continue
 
     except Exception as e:
