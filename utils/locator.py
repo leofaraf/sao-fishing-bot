@@ -4,6 +4,21 @@ from utils import telegram_client
 import pyautogui
 import logging
 
+def locate_fbtn():
+    times = 0
+    e = None
+    while times != MAX_LOCATING_DURACTION:
+        try:
+            return pyautogui.locateCenterOnScreen("assets/f.png", confidence=.8)
+        except Exception as err:
+            e = err
+            sleep(1)
+            times += 1
+
+    logging.error(e)
+    telegram_client.send_message("Can't locate F button")
+    raise e
+
 def locate_images(except_message, *images):
     times = 0
     e = None

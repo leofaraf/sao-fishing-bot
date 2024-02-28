@@ -6,10 +6,13 @@ import logging
 def main():
     sleep(5)
 
+    fbtn = locator.locate_fbtn()
+
     try:
         # TODO: Press F while it isn't in fishing menu
         while True:
-            pyautogui.hotkey("F") # TODO: Press F
+            mouse.safety_click(fbtn) 
+
             logging.info("Pressing F")
             try:
                 pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.8)
