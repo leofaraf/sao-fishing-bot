@@ -32,14 +32,14 @@ def main():
             while True:
                 cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing")
                 defer = zone.y - cur.y 
-                if -150 <= defer <= 150:
+                if -150 <= defer:
                     break
                 else:
                     logging.info(f"Deference between current and target zone is: {defer}px")
             pydirectinput.press('f')
-            sleep(.1)
-
             logging.info("Pressing F")
+
+            sleep(1)
             try:
                 exit_btn = pyautogui.locateCenterOnScreen("assets/x.png", confidence=.8)
                 mouse.safety_click(exit_btn)
