@@ -32,7 +32,7 @@ def main():
             while True:
                 cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing")
                 defer = zone.y - cur.y 
-                if defer <= 150:
+                if -150 <= defer <= 150:
                     break
                 else:
                     logging.info(f"Deference between current and target zone is: {defer}px")
