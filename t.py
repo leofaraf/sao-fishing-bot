@@ -1,3 +1,3 @@
-import pyautogui
+import pyautogui, pydirectinput
 while True:
-    pyautogui.hotkey("F")
+    pydirectinput.press('f')
