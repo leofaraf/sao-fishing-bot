@@ -29,8 +29,11 @@ def main():
 
         # TODO: Attack while fish isn't killed
         while True:
-            cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
-            logging.info(zone.y - cur.y) 
+            try:
+                cur = pyautogui.locateCenterOnScreen("assets/x.png", confidence=.8)
+                logging.info(zone.y - cur.y) 
+            except Exception as e:
+                logging.error(e)
             # while True:
             #     cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
             #     defer = zone.y - cur.y 
