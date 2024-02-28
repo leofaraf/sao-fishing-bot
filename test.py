@@ -25,17 +25,21 @@ def main():
                 logging.info("We aren't in menu. Trying again")
                 continue
         
-        sleep(0.25)
-        
-        exit() # TODO: Await active
-        sleep(0.25)
-
+        # TODO: Attack while fish isn't killed
         while True:
-            exit() # TODO: Await while fish'll on attack
-            pyautogui.hotkey("f") # TODO: Press F
-            if True: # TODO: If fish is killed
+            pydirectinput.press('f')
+            sleep(.1)
+
+            logging.info("Pressing F")
+            try:
                 exit_btn = locator.locate_image("assets/x.png", .7, "Can't locate exit after killing a fish")
                 mouse.safety_click(exit_btn)
+                logging.info("Fish menu has found")
+                break
+            except:
+                logging.info("We aren't in menu. Trying again")
+                continue
+            
     except Exception as e:
         logging.error(f"Error: {e}")
         telegram_client.send_message(f"Error, please check logs")
