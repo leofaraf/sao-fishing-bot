@@ -37,7 +37,7 @@ def main():
                 pydirectinput.press('f')
                 logging.info("Pressing F")
 
-                sleep(1)
+                sleep(2)
                 try:
                     zone = locator.fast_locate("assets/zone.png", .7, "Can't locate \"green\" zone")
                     logging.info("We aren't killed fish. Trying again")
