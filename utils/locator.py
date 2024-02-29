@@ -3,6 +3,7 @@ from settings import MAX_LOCATING_DURACTION
 from utils import telegram_client
 import pyautogui
 import logging
+from timeit import default_timer
 
 def locate_fbtn():
     times = 0
@@ -43,11 +44,15 @@ def locate_images(except_message, *images):
         
 
 def locate_image(path, confidence, except_message, sleep_time = 1):
+    start = default_timer()
+
     times = 0
     e = None
     while times != MAX_LOCATING_DURACTION:
         try:
-            return pyautogui.locateCenterOnScreen(path, confidence=confidence)
+            pos = pyautogui.locateCenterOnScreen(path, confidence=confidence)
+            logging.info(f"Locating time of \"{path}\" is: {default_timer() - start}")
+            return pos
         except Exception as err:
             e = err
             sleep(sleep_time)
