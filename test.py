@@ -23,7 +23,7 @@ def main():
                     logging.info("We aren't in menu. Trying again")
                     continue
             
-            zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
+            zone = locator.fast_locate("assets/zone.png", .8, "Can't locate \"green\" zone")
 
             # TODO: Attack while fish isn't killed
             while True:
