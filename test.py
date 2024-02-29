@@ -31,13 +31,12 @@ def main():
                     cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
                     defer = zone.y - cur.y
                     logging.info(f"Zone is {zone.y}, current is {cur.y}")
-                    if -150 <= defer <= 150:
+                    if -50 <= defer <= 50:
                         break
                         
                 pydirectinput.press('f')
                 logging.info("Pressing F")
 
-                sleep(1)
                 try:
                     zone = locator.locate_image("assets/zone.png", .7, "Can't locate \"green\" zone")
                     logging.info("We aren't killed fish. Trying again")
