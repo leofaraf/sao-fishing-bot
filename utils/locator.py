@@ -61,3 +61,20 @@ def locate_image(path, confidence, except_message, sleep_time = 1):
     logging.error(e)
     telegram_client.send_message(except_message)
     raise e
+
+def fast_locate(path, confidence, except_message):
+    start = default_timer()
+
+    times = 0
+    e = None
+    while (default_timer() - start) < MAX_LOCATING_DURACTION:
+        try:
+            pos = pyautogui.locateCenterOnScreen(path, confidence=confidence)
+            logging.info(f"Locating time of \"{path}\" is: {default_timer() - start}")
+            return pos
+        except Exception as err:
+            pass
+
+    logging.error(e)
+    telegram_client.send_message(except_message)
+    raise e
