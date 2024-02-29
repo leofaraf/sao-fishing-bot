@@ -29,17 +29,17 @@ def main():
             while True:
                 while True:
                     cur = locator.locate_image("assets/cur.png", .7, "Can't locate current position of fishing", 0)
-                    defer = zone.y - cur.y 
+                    defer = zone.y - cur.y
+                    logging.info(f"Zone is {zone.y}, current is {cur.y}")
                     if -150 <= defer <= 150:
                         break
-                    else:
-                        logging.info(f"Deference between current and target zone is: {defer}px")
+                        
                 pydirectinput.press('f')
                 logging.info("Pressing F")
 
                 sleep(1)
                 try:
-                    zone = locator.locate_image("assets/zone.png", .8, "Can't locate \"green\" zone")
+                    zone = locator.locate_image("assets/zone.png", .7, "Can't locate \"green\" zone")
                     logging.info("We aren't killed fish. Trying again")
                 except:
                     try:
@@ -48,7 +48,7 @@ def main():
                         logging.info("Fish menu has found")
                         break
                     except: 
-                        pass
+                        logging.info("We aren't in menu, but we can't found X button")
 
         except Exception as e:
             logging.exception(e)
