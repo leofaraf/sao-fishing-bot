@@ -40,7 +40,7 @@ def main():
                 while True:
                     cur = locator.fast_locate("assets/cur.png", .5, "Can't locate current position of fishing")
                     defer = zone.y - cur.y
-                    logging.info(f"Zone is {zone.y}, current is {cur.y}")
+                    logging.info(f"Zone is {zone}, current is {cur}")
                     if -50 <= defer <= 50:
                         break
                         
