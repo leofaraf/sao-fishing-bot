@@ -5,7 +5,7 @@ BOT_NAME = "Bot 1"
 TELEGRAM_BOT_TOKEN = "6757315128:AAH4NqGwM7_0RiO_d4EAMuIrojz5rjv9Pok"
 
 # Pass your Telegram Chat ID with bot here (you can find in bot https://t.me/RawDataBot)
-TELEGRAM_ADMIN_ID = 5488031843
+TELEGRAM_ADMIN_ID = 1989248219
 
 # For devs
 MOUSE_MOVE_DURACTION = .05
