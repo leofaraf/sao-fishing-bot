@@ -15,7 +15,7 @@ def main():
 
                 logging.info("Pressing F")
                 try:
-                    pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.6)
+                    pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.8)
                     telegram_client.send_message("finded")
                     logging.info("Fish menu has found")
                     break
