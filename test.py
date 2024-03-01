@@ -26,7 +26,7 @@ def main():
             # TODO: Attack while fish isn't killed
             while True:
                 try:
-                    zone = locator.fast_locate("assets/zone.png", .7, "Can't locate \"green\" zone")
+                    zone = locator.fast_zone()
                     logging.info("We aren't killed fish. Trying again")
                 except:
                     try:

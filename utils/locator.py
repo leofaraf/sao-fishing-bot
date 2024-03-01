@@ -62,6 +62,26 @@ def locate_image(path, confidence, except_message, sleep_time = 1):
     telegram_client.send_message(except_message)
     raise e
 
+def fast_zone():
+    start = default_timer()
+
+    times = 0
+    e = None
+    while (default_timer() - start) < MAX_LOCATING_DURACTION:
+        try:
+            pos = pyautogui.locateCenterOnScreen("assets/zone.png", confidence=.7, region=[
+                1016, 320,
+                100, 600
+            ])
+            logging.info(f"Locating time of \"zone\" is: {default_timer() - start}")
+            return pos
+        except Exception as err:
+            pass
+
+    logging.error(e)
+    telegram_client.send_message("Can't locate zone")
+    raise e
+
 def fast_locate(path, confidence, except_message):
     start = default_timer()
 
