@@ -26,16 +26,12 @@ def main():
             # TODO: Attack while fish isn't killed
             while True:
                 try:
-                    zone = locator.fast_zone()
+                    zone = locator.fast_locate("assets/zone.png", .7, "Can't locate \"green\" zone")
                     logging.info("We aren't killed fish. Trying again")
                 except:
-                    try:
-                        exit_btn = locator.fast_locate("assets/x.png", .8, "Can't locate X")
-                        mouse.safety_click(exit_btn)
-                        logging.info("Fish menu has found")
-                        break
-                    except: 
-                        logging.info("We aren't in menu, but we can't found X button")
+                    pydirectinput.press('backspace')
+                    sleep(3)
+                    break
                 
                 while True:
                     cur = locator.fast_locate("assets/cur.png", .7, "Can't locate current position of fishing")
