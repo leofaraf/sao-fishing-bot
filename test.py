@@ -26,7 +26,7 @@ def main():
             # TODO: Attack while fish isn't killed
             while True:
                 try:
-                    zone = locator.fast_locate("assets/zone.png", .7, "Can't locate \"green\" zone")
+                    zone = locator.fast_locate("assets/zone.png", .9, "Can't locate \"green\" zone")
                     logging.info("We aren't killed fish. Trying again")
                 except:
                     try:
@@ -38,7 +38,7 @@ def main():
                         logging.info("We aren't in menu, but we can't found X button")
                 
                 while True:
-                    cur = locator.fast_locate("assets/cur.png", .7, "Can't locate current position of fishing")
+                    cur = locator.fast_locate("assets/cur.png", .9, "Can't locate current position of fishing")
                     defer = zone.y - cur.y
                     logging.info(f"Zone is {zone.y}, current is {cur.y}")
                     if -50 <= defer <= 50:
