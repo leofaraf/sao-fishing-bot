@@ -3,6 +3,8 @@ from utils import logger, telegram_client, locator, mouse
 import pyautogui, pydirectinput
 import logging
 
+
+
 def main():
     sleep(5)
 
@@ -33,20 +35,23 @@ def main():
                     break
                 
                 while True:
-                    cur = locator.fast_locate("assets/cur.png", .7, "Can't locate current position of fishing")
+                    cur = locator.fast_cur()
                     defer = zone.y - cur.y
                     logging.info(f"Zone is {zone}, current is {cur}")
                     if -50 <= defer <= 50:
+                        pydirectinput.press('f')
+                        logging.info("Pressing F")
                         break
-                        
-                pydirectinput.press('f')
-                logging.info("Pressing F")
 
                 sleep(2)
-                
+
+        except locator.CurLocatingException:
+            logging.warning("Can't locate cur")
+            pydirectinput.press('backspace')
+            sleep(3)
 
         except Exception as e:
-            logging.exception(e)
+            logging.exception("Error")
             telegram_client.send_message(f"Error, please check logs")
 
             pydirectinput.press('backspace')
@@ -54,4 +59,7 @@ def main():
 
 if __name__ == "__main__":
     logger.configure_logger(True)
-    main()
+    try:
+        main()
+    except:
+        telegram_client.send_message("CRASH. Bot is crashed. Please rerun it or check logs.")
