@@ -15,7 +15,7 @@ def main():
 
                 logging.info("Pressing F")
                 try:
-                    pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.8)
+                    pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.7)
                     telegram_client.send_message("finded")
                     logging.info("Fish menu has found")
                     break
@@ -26,11 +26,11 @@ def main():
             # TODO: Attack while fish isn't killed
             while True:
                 try:
-                    zone = locator.fast_locate("assets/zone.png", .9, "Can't locate \"green\" zone")
+                    zone = locator.fast_locate("assets/zone.png", .7, "Can't locate \"green\" zone")
                     logging.info("We aren't killed fish. Trying again")
                 except:
                     try:
-                        exit_btn = locator.fast_locate("assets/x.png", .8, "Can't locate X", .5)
+                        exit_btn = locator.fast_locate("assets/x.png", .8, "Can't locate X")
                         mouse.safety_click(exit_btn)
                         logging.info("Fish menu has found")
                         break
@@ -38,7 +38,7 @@ def main():
                         logging.info("We aren't in menu, but we can't found X button")
                 
                 while True:
-                    cur = locator.fast_locate("assets/cur.png", .9, "Can't locate current position of fishing")
+                    cur = locator.fast_locate("assets/cur.png", .5, "Can't locate current position of fishing")
                     defer = zone.y - cur.y
                     logging.info(f"Zone is {zone.y}, current is {cur.y}")
                     if -50 <= defer <= 50:
