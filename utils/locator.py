@@ -82,6 +82,7 @@ def fast_zone():
     telegram_client.send_message("Can't locate zone")
     raise e
 
+class CurLocatingException(Exception): pass
 def fast_cur():
     start = default_timer()
 
@@ -95,7 +96,7 @@ def fast_cur():
         except Exception as err:
             pass
 
-    raise e
+    raise CurLocatingException()
 
 def fast_locate(path, confidence, except_message):
     start = default_timer()

@@ -3,6 +3,8 @@ from utils import logger, telegram_client, locator, mouse
 import pyautogui, pydirectinput
 import logging
 
+
+
 def main():
     sleep(5)
 
@@ -32,26 +34,24 @@ def main():
                     sleep(3)
                     break
                 
-                is_cur_available = True
                 while True:
-                    try:
-                        cur = locator.fast_cur()
-                        defer = zone.y - cur.y
-                        logging.info(f"Zone is {zone}, current is {cur}")
-                        if -50 <= defer <= 50:
-                            pydirectinput.press('f')
-                            logging.info("Pressing F")
-                            break
-                    except:
-                        logging.exception("Can't locate current position")
-                        is_cur_available == False
-                if not is_cur_available:
-                    break
+                    cur = locator.fast_cur()
+                    defer = zone.y - cur.y
+                    logging.info(f"Zone is {zone}, current is {cur}")
+                    if -50 <= defer <= 50:
+                        pydirectinput.press('f')
+                        logging.info("Pressing F")
+                        break
 
                 sleep(2)
 
+        except locator.CurLocatingException:
+            logging.warning("Can't locate cur")
+            pydirectinput.press('backspace')
+            sleep(3)
+
         except Exception as e:
-            logging.exception(e)
+            logging.exception("Error")
             telegram_client.send_message(f"Error, please check logs")
 
             pydirectinput.press('backspace')
