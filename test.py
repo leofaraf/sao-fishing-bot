@@ -16,7 +16,6 @@ def main():
                 logging.info("Pressing F")
                 try:
                     pyautogui.locateCenterOnScreen("assets/kill_bar.png", confidence=.7)
-                    telegram_client.send_message("finded")
                     logging.info("Fish menu has found")
                     break
                 except:
@@ -43,7 +42,7 @@ def main():
                 pydirectinput.press('f')
                 logging.info("Pressing F")
 
-                sleep(1)
+                sleep(2)
                 
 
         except Exception as e:

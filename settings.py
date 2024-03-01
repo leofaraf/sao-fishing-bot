@@ -1,5 +1,5 @@
 # Pass name of this machine, it'll be used in notifications.
-BOT_NAME = "Example"
+BOT_NAME = "Bot 1"
 
 # Pass your Telegram Bot Token please
 TELEGRAM_BOT_TOKEN = "6757315128:AAH4NqGwM7_0RiO_d4EAMuIrojz5rjv9Pok"
