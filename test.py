@@ -33,11 +33,15 @@ def main():
                     break
                 
                 while True:
-                    cur = locator.fast_locate("assets/cur.png", .7, "Can't locate current position of fishing")
-                    defer = zone.y - cur.y
-                    logging.info(f"Zone is {zone}, current is {cur}")
-                    if -50 <= defer <= 50:
-                        break
+                    try:
+                        cur = locator.fast_cur()
+                        defer = zone.y - cur.y
+                        logging.info(f"Zone is {zone}, current is {cur}")
+                        if -50 <= defer <= 50:
+                            break
+                    except Exception as e:
+                        logging.warning(f"Can't locate current position: {e}")
+
                         
                 pydirectinput.press('f')
                 logging.info("Pressing F")
@@ -54,4 +58,7 @@ def main():
 
 if __name__ == "__main__":
     logger.configure_logger(True)
-    main()
+    try:
+        main()
+    except:
+        telegram_client.send_message("CRASH. Bot is crashed. Please rerun it or check logs.")

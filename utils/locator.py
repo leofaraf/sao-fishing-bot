@@ -82,6 +82,21 @@ def fast_zone():
     telegram_client.send_message("Can't locate zone")
     raise e
 
+def fast_cur():
+    start = default_timer()
+
+    times = 0
+    e = None
+    while (default_timer() - start) < MAX_LOCATING_DURACTION:
+        try:
+            pos = pyautogui.locateCenterOnScreen("assets/cur.png", confidence=.7)
+            logging.info(f"Locating time of \"cur.png\" is: {default_timer() - start}")
+            return pos
+        except Exception as err:
+            pass
+
+    raise e
+
 def fast_locate(path, confidence, except_message):
     start = default_timer()
 
