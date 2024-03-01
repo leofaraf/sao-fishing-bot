@@ -38,7 +38,7 @@ def main():
                         logging.info("We aren't in menu, but we can't found X button")
                 
                 while True:
-                    cur = locator.fast_locate("assets/cur.png", .5, "Can't locate current position of fishing")
+                    cur = locator.fast_locate("assets/cur.png", .7, "Can't locate current position of fishing")
                     defer = zone.y - cur.y
                     logging.info(f"Zone is {zone}, current is {cur}")
                     if -50 <= defer <= 50:
