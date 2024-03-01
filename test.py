@@ -32,22 +32,23 @@ def main():
                     sleep(3)
                     break
                 
+                is_cur_available = True
                 while True:
                     try:
                         cur = locator.fast_cur()
                         defer = zone.y - cur.y
                         logging.info(f"Zone is {zone}, current is {cur}")
                         if -50 <= defer <= 50:
+                            pydirectinput.press('f')
+                            logging.info("Pressing F")
                             break
-                    except Exception as e:
-                        logging.warning(f"Can't locate current position: {e}")
-
-                        
-                pydirectinput.press('f')
-                logging.info("Pressing F")
+                    except:
+                        logging.exception("Can't locate current position")
+                        is_cur_available == False
+                if not is_cur_available:
+                    break
 
                 sleep(2)
-                
 
         except Exception as e:
             logging.exception(e)
